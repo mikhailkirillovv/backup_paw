@@ -32,8 +32,7 @@ func main() {
 		log.Println("without_redis")
 		time.Sleep(7 * time.Second)
 		backup()
-		main()
-	} else {
+	else {
 		log.Println("full_backup")
 	}
 }
