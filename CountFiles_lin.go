@@ -23,6 +23,7 @@ func backup() {
 	}
 	defer logFile.Close()
 	log.SetOutput(logFile)
+	main()
 }
 
 func main() {
@@ -32,7 +33,7 @@ func main() {
 		log.Println("without_redis")
 		time.Sleep(7 * time.Second)
 		backup()
-	else {
+	} else {
 		log.Println("full_backup")
 	}
 }
