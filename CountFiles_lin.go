@@ -27,11 +27,21 @@ func backup() {
 }
 
 func archive(){
-	cmd := exec.Command("/usr/bin/zip -r "/home/opc/scripts/archive-paw-dev-$(date +"\%Y-\%m-\%d").zip" /home/opc/t1"
-	cmd.Run()
+	
+	out, err := exec.Command("bash", "-c", "/usr/bin/zip -r /home/opc/scripts/archive-paw-dev-$(date +'%Y-%m-%d').zip /home/opc/t1").Output()
+	if err != nil {
+        fmt.Printf("%s", err)
+    	}
+
+    	fmt.Println("Command Successfully Executed")
+    	output := string(out[:])
+    	fmt.Println(output)	
+	
+
+	/*cmd.Run()
 	time.Sleep(10 * time.Second)
 	cmd2 := exec.Command("rm -rf /home/opc/t1")
-	cmd2.Run()
+	cmd2.Run()*/
 }
 
 func main() {
@@ -43,5 +53,6 @@ func main() {
 		backup()
 	} else {
 		log.Println("full_backup")
+		archive()
 	}
 }
