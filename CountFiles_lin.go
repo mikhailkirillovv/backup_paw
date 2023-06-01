@@ -26,6 +26,14 @@ func backup() {
 	main()
 }
 
+func archive(){
+	cmd := exec.Command("/usr/bin/zip -r "/home/opc/scripts/archive-paw-dev-$(date +"\%Y-\%m-\%d").zip" /home/opc/t1"
+	cmd.Run()
+	time.Sleep(10 * time.Second)
+	cmd2 := exec.Command("rm -rf /home/opc/t1")
+	cmd2.Run()
+}
+
 func main() {
 	a, _ := os.ReadDir("/home/opc/t1")
 	fmt.Println(len(a))
